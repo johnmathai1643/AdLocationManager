@@ -21,6 +21,8 @@ Rails.application.routes.draw do
      resources :ads_manager
   end
 
+  post '/api/ads_manager/adlocations' => 'api/ads_manager#adlocations'
+
   # Example resource route with options:
   #   resources :products do
   #     member do

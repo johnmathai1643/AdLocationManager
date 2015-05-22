@@ -8,7 +8,6 @@ class API::AdsManagerController < ApplicationController
   end
 
   def create 
-    # @ads = AdsManager.all
     respond_to do |format|
       format.json { render :json => @ads }
     end
@@ -16,6 +15,13 @@ class API::AdsManagerController < ApplicationController
 
   def show
 
+  end
+
+  def adlocations
+    @adlocations = AdsManager.all
+    respond_to do |format|
+      format.json { render :json => @adlocations }
+    end
   end
 
 end
