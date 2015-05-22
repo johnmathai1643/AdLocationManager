@@ -18,10 +18,14 @@ Rails.application.routes.draw do
   resources :ads_manager
 
   namespace :api, :defaults => {:format => :json} do
-     resources :ads_manager
+     resources :ads_manager, only: [:index] do 
+      collection do 
+        # get 'adlocations'
+      end 
+     end
   end
 
-  post '/api/ads_manager/adlocations' => 'api/ads_manager#adlocations'
+  # post '/api/ads_manager/adlocations' => 'api/ads_manager#adlocations'
 
   # Example resource route with options:
   #   resources :products do
