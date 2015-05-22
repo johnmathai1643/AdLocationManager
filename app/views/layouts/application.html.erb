@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>AdLocationManager</title>
+
+
+  <% if user_signed_in? %>
+      <%= stylesheet_link_tag 'application', media: 'all', 'data-turbolinks-track' => true %>
+  <% else %>
+      <%= stylesheet_link_tag 'index', media: 'all', 'data-turbolinks-track' => true %>
+  <% end %>
+
+  <%= javascript_include_tag 'application', 'data-turbolinks-track' => true %>
+  <%= csrf_meta_tags %>
+</head>
+
+ <style>
+      #map-canvas {
+        height: 500px;
+      }
+    </style>
+
+    <script type="text/javascript">
+     
+    </script>
+
+<body>
+	<% if user_signed_in? %>
+	   <div id="wrapper">
+	      <%= render(:partial => "/ads_manager/nav") %>
+	      <%= yield :page_wrapper %>
+	    </div>
+	      <%= yield :script %>
+	<% else %>
+	   <%= yield %>
+	<% end %>
+</body>
+</html>

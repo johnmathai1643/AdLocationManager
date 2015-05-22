@@ -1,0 +1,73 @@
+<% content_for :page_wrapper do %>
+        <div id="page-wrapper">
+            <div class="row">
+                <div class="col-lg-12">
+                    <h1 class="page-header">AdManager</h1>
+                </div>
+                <!-- /.col-lg-12 -->
+            </div>
+            <!-- /.row -->
+           
+             <div class="row">
+                <div class="col-lg-12">
+                    <div class="panel panel-default">
+                        <div class="panel-heading">
+                            Ad Table
+                        </div>
+                        <!-- /.panel-heading -->
+                        <div class="panel-body">
+                            <div class="dataTable_wrapper">
+                                <table class="table table-striped table-bordered table-hover display compact" id="dataTables">
+                                    <thead>
+                                        <tr>
+                                            <th>Id</th>
+                                            <th>Name</th>
+                                            <th>Latitude</th>
+                                            <th>Longitude</th>
+                                            <th>Snippet</th>
+                                            <th>Show</th>
+                                            <th>Edit</th>
+                                            <th>Delete</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                      <% @ads_manager.each do |ads| %>
+                                        <tr>
+                                          <td><%= ads.id %></td>
+                                          <td><%= ads.name %></td>
+                                          <td><%= ads.lat %></td>
+                                          <td><%= ads.lon %></td>
+                                          <td><%= ads.snippet %></td>
+                                          <td><%= link_to 'Show', ads_manager_path(ads) %></td>
+                                          <td><%= link_to 'Edit', edit_ads_manager_path(ads) %></td>
+                                          <td><%= link_to 'Destroy', ads_manager_path(ads), method: :delete, data: { confirm: 'Are you sure?' } %></td> 
+                                        </tr>
+                                      <% end %>
+                                    </tbody>
+                                </table>
+                            </div>
+                            <!-- /.table-responsive -->
+                            <div class="well">
+                                <h4>Advertisement Information</h4>
+                                <p>Details for each advertisement yet to implemented.</p>
+                            </div>
+                        </div> <!-- /.panel-body -->
+                    </div> <!-- /.panel -->
+
+                </div>
+                <!-- /.col-lg-12 -->
+            </div>
+        </div>
+        <!-- /#page-wrapper -->
+
+<% end %>    
+
+<% content_for :script do %>
+
+<script type="text/javascript">
+    $(document).ready(function(){
+    $('#dataTables').DataTable();
+});
+</script>
+<% end %>    
+
