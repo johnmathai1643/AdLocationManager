@@ -1,0 +1,41 @@
+  <script type="text/javascript">
+  var map;
+
+        function initialize() {
+          var mapOptions = {
+            zoom: 10
+          };
+          map = new google.maps.Map(document.getElementById('map-canvas'),mapOptions);
+          
+              var marker_center = new google.maps.Marker({
+              position: new google.maps.LatLng (<%=@lat%>,<%=@lon%>),
+              map: map,
+              title: 'New Location'
+            });
+                
+               <% @ads_manager.each do |ads| -%>
+                var iconBase = 'http://maps.google.com/mapfiles/kml/paddle/';
+                var marker = new google.maps.Marker({
+                position: new google.maps.LatLng (<%=ads.lat%>,<%=ads.lon%>),
+                map: map,
+                title:'<%=ads.name%>',
+                icon: iconBase + 'red-stars-lv.png'
+                });
+
+               <% end -%>  
+
+          // var infowindow = new google.maps.InfoWindow(marker_center);
+          map.setCenter(marker_center.position);
+        }
+
+        function loadScript() {
+        var script = document.createElement('script');
+        script.type = 'text/javascript';
+        script.src = 'http://maps.googleapis.com/maps/api/js?v=3.exp' +
+            '&signed_in=true&callback=initialize';
+        document.body.appendChild(script);
+       }
+
+        window.onload = loadScript;
+initialize();
+</script>

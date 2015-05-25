@@ -4,7 +4,6 @@ class AdsManagerController < ApplicationController
 
 	layout 'application'
     
-
     def fetch_location
     	@lat = params[:lat]
     	@lon = params[:lon]
@@ -12,6 +11,23 @@ class AdsManagerController < ApplicationController
 	        format.js
 	    end
     end
+
+    def check_ad_location
+      @lat = 0
+      @lon = 0      
+      @ads_manager = AdsManager.all
+    end
+
+    def get_ad_location
+    	@lat = params[:lat].to_i
+    	@lon = params[:lon].to_i
+        @ads_manager = AdsManager.where("lat between '#{@lat+0.011111}' and '#{@lat+0.444444}' and lon between '#{@lon+0.000001}' and '#{@lon+0.9999999}'")
+
+	    respond_to do |format|
+	        format.js
+	    end
+    end
+
 
     def dashboard
       @ads_manager = AdsManager.all
