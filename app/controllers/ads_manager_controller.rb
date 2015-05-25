@@ -4,6 +4,15 @@ class AdsManagerController < ApplicationController
 
 	layout 'application'
     
+
+    def fetch_location
+    	@lat = params[:lat]
+    	@lon = params[:lon]
+	    respond_to do |format|
+	        format.js
+	    end
+    end
+
     def dashboard
       @ads_manager = AdsManager.all
     end
@@ -44,7 +53,6 @@ class AdsManagerController < ApplicationController
     def destroy
 	  @ads_manager = Article.find(params[:id])
 	  @ads_manager.destroy
-	 
 	  redirect_to articles_path
 	end
 

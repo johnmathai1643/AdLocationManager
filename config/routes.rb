@@ -6,6 +6,7 @@ Rails.application.routes.draw do
   # You can have the root of your site routed with "root"
   root 'index#index'
   get '/ads_manager/dashboard' => 'ads_manager#dashboard'
+  get '/ads_manager/fetch_location' => 'ads_manager#fetch_location'
 
     # Example of regular route:
   #   get 'products/:id' => 'catalog#view'

@@ -72,13 +72,16 @@
                         </div>
                         <!-- /.panel-body -->
                     </div>
+
                     <!-- /.panel -->
                     <div class="panel panel-default">
                         <div class="panel-heading">
-                            <i class="fa fa-bar-chart-o fa-fw"></i> Donut Chart Example
+                            <i class="fa fa-bar-chart-o fa-fw"></i> Current Location
                         </div>
                         <div class="panel-body">
-                            <div id="morris-donut-chart"></div>
+                          <div id = "current_location">
+                            <%= render partial: 'current_location_partial', locals: {lat: @lat,lon: @lon} %>
+                          </div>
                             <a href="#" class="btn btn-default btn-block">View Details</a>
                         </div>
                         <!-- /.panel-body -->

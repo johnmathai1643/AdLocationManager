@@ -6,19 +6,22 @@
             zoom: 10
           };
           map = new google.maps.Map(document.getElementById('map-canvas'),mapOptions);
-
+          // var lat,lon;
           // Try HTML5 geolocation
           if(navigator.geolocation) {
             navigator.geolocation.getCurrentPosition(function(position) {
               var pos = new google.maps.LatLng(position.coords.latitude,
                                                position.coords.longitude);
 
+              // lat = position.coords.latitude;
+              // lon = position.coords.longitude;
+
               var marker = new google.maps.Marker({
               position: pos,
               map: map,
               title: 'You are here.'
             });
-
+                
                <% @ads_manager.each do |ads| -%>
                 var iconBase = 'http://maps.google.com/mapfiles/kml/paddle/';
                 var marker = new google.maps.Marker({
@@ -30,6 +33,13 @@
 
                <% end -%>  
 
+               $.ajax({
+                  type: "GET",
+                  url: "/ads_manager/fetch_location?lat="+position.coords.latitude+"&lon="+position.coords.longitude,
+                  success: function(data){
+                    //if ever there is something more to do (there is also an error handler)
+                  }
+                });
 
               map.setCenter(pos);
             }, function() {
