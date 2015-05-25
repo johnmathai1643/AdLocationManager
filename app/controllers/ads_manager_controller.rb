@@ -19,8 +19,8 @@ class AdsManagerController < ApplicationController
     end
 
     def get_ad_location
-    	@lat = params[:lat].to_i
-    	@lon = params[:lon].to_i
+    	@lat = params[:lat].to_f
+    	@lon = params[:lon].to_f
         @ads_manager = AdsManager.where("lat between '#{@lat}' and '#{@lat+0.9999999}' and lon between '#{@lon}' and '#{@lon+0.9999999}'")
 
 	    respond_to do |format|
