@@ -1,7 +1,6 @@
 class API::AdsManagerController < ApplicationController
 
   def index
-    # ads = AdsManager.all
     lat = params[:lat].to_i
     lon = params[:lon].to_i
     
@@ -11,12 +10,5 @@ class API::AdsManagerController < ApplicationController
       format.json { render :json => adlocation, status: 201 }
     end
   end
-
-  # def adlocations
-  #   lat = params[:lat]
-  #   logger.info lat
-  #   adlocations_list = AdsManager.all
-  #   render json: adlocations_list, status: 201 
-  # end
 
 end
