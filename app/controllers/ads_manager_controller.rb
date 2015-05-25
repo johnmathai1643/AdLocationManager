@@ -13,8 +13,9 @@ class AdsManagerController < ApplicationController
     end
 
     def check_ad_location
-      @lat = 0
-      @lon = 0      
+     # Delhi coordinates
+      @lat = 28.6139
+      @lon = 77.2090
       @ads_manager = AdsManager.all
     end
 
