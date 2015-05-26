@@ -4,7 +4,7 @@ class API::AdsManagerController < ApplicationController
     lat = params[:lat].to_f
     lon = params[:lon].to_f
     
-    adlocation = AdsManager.where("lat between '#{lat+0.011111}' and '#{lat+0.444444}' and lon between '#{lon+0.000001}' and '#{lon+0.9999999}'")
+    adlocation = AdsManager.near([lat, lon], 50)
     adlocation = {'adlocation' => adlocation}
     respond_to do |format|
       format.json { render :json => adlocation, status: 201 }
