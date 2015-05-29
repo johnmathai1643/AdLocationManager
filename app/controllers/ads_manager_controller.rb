@@ -16,7 +16,8 @@ class AdsManagerController < ApplicationController
      # Delhi coordinates
       @lat = 28.6139
       @lon = 77.2090
-      @ads_manager = AdsManager.all
+
+      @ads_manager = AdsManager.near([@lat, @lon], 50)
     end
 
     def get_ad_location
@@ -29,9 +30,7 @@ class AdsManagerController < ApplicationController
 	    end
     end
 
-
     def dashboard
-
       @ads_manager = AdsManager.all
     end
 
