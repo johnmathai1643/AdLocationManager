@@ -70,7 +70,7 @@ class AdsManagerController < ApplicationController
     def destroy
 	  @ads_manager = AdsManager.find(params[:id])
 	  @ads_manager.destroy
-	  redirect_to articles_path
+	  redirect_to ads_manager_index_path
 	end
 
  private
