@@ -23,6 +23,7 @@ Rails.application.routes.draw do
       collection do 
         get 'dashboard'
         get 'fetch_location'
+        get 'users'
         get 'check_ad_location'
         post 'get_ad_location'
       end 

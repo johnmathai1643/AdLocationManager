@@ -34,44 +34,47 @@ class AdsManagerController < ApplicationController
       @ads_manager = AdsManager.all
     end
 
+    def users
+      @users = User.all
+    end
+
     def index
       @ads_manager = AdsManager.all
     end
 
-	def new 
- 
- 	end
+  	def new 
+   
+   	end
 
-	def create 
-	  # render plain: params[:ads_manager].inspect
-	  @ads_manager = AdsManager.new(ads_manager_params)
-	  @ads_manager.save
-  	  redirect_to action: "index"
+  	def create 
+  	  # render plain: params[:ads_manager].inspect
+  	  @ads_manager = AdsManager.new(ads_manager_params)
+  	  @ads_manager.save
+      redirect_to action: "index"
     end
-	
- 	def edit
-      @ads_manager = AdsManager.find(params[:id])
+  	
+   	def edit
+        @ads_manager = AdsManager.find(params[:id])
     end
 
     def update
-	  @ads_manager = AdsManager.find(params[:id])
-
-	  if @ads_manager.update(ads_manager_params)
-	    redirect_to @ads_manager
-	  else
-	    render 'edit'
-	  end
-	end
-	
-	def show
-      @ads_manager = AdsManager.find(params[:id])
+  	  @ads_manager = AdsManager.find(params[:id])
+  	  if @ads_manager.update(ads_manager_params)
+  	    redirect_to @ads_manager
+  	  else
+  	    render 'edit'
+  	  end
+  	end
+  	
+  	def show
+        @ads_manager = AdsManager.find(params[:id])
     end
 
     def destroy
-	  @ads_manager = AdsManager.find(params[:id])
-	  @ads_manager.destroy
-	  redirect_to ads_manager_index_path
-	end
+  	  @ads_manager = AdsManager.find(params[:id])
+  	  @ads_manager.destroy
+  	  redirect_to ads_manager_index_path
+  	end
 
  private
    def ads_manager_params
