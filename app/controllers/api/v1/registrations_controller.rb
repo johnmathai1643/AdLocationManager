@@ -5,7 +5,8 @@ class API::V1::RegistrationsController < Devise::RegistrationsController
     if @user.save
       render :json => {:state => {:code => 0}, :data => @user }
     else
-      render :json => {:state => {:code => 1, :messages => @user.errors.full_messages} }
+      @user = null
+      render :json => {:state => {:code => 1, :messages => @user.errors.full_messages}, :data => @user}
     end
 
   end
