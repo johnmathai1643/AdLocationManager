@@ -4,7 +4,7 @@
   <title>AdLocationManager</title>
 
 
-  <% if user_signed_in? %>
+  <% if admin_signed_in? %>
       <%= stylesheet_link_tag 'application', media: 'all', 'data-turbolinks-track' => true %>
   <% else %>
       <%= stylesheet_link_tag 'index', media: 'all', 'data-turbolinks-track' => true %>
@@ -25,7 +25,7 @@
     </script>
 
 <body>
-	<% if user_signed_in? %>
+	<% if admin_signed_in? %>
 	   <div id="wrapper">
 	      <%= render(:partial => "/ads_manager/nav") %>
 	      <%= yield :page_wrapper %>

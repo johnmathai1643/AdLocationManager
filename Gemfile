@@ -34,7 +34,7 @@ gem 'gmaps4rails'
 gem 'geocoder'
 # Use unicorn as the app server
 # gem 'unicorn'
-
+gem 'simple_token_authentication', '~> 1.0'
 # Use Capistrano for deployment
 # gem 'capistrano-rails', group: :development
 

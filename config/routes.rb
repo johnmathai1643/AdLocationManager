@@ -1,5 +1,5 @@
 Rails.application.routes.draw do
-  devise_for :users
+  devise_for :admins
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
 
@@ -28,15 +28,21 @@ Rails.application.routes.draw do
       end 
      end
 
+################################################### API ROUTES ###########################################################
+
+  devise_for :users, :controllers => {:registrations => "api/v1/registrations", :sessions => "api/v1/sessions"}
+
   namespace :api, :defaults => {:format => :json} do
+    namespace :v1 do
      resources :ads_manager, only: [:index] do 
       collection do 
         # get 'adlocations'
       end 
      end
+    end
   end
 
-  # post '/api/ads_manager/adlocations' => 'api/ads_manager#adlocations'
+################################################### API ROUTES ###########################################################
 
   # Example resource route with options:
   #   resources :products do
