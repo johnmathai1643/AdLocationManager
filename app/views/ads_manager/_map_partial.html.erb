@@ -25,7 +25,7 @@
                <% @ads_manager.each do |ads| -%>
                 var iconBase = 'http://maps.google.com/mapfiles/kml/paddle/';
                 var marker = new google.maps.Marker({
-                position: new google.maps.LatLng (<%=ads.lat%>,<%=ads.lon%>),
+                position: new google.maps.LatLng (<%=ads.latitude%>,<%=ads.longitude%>),
                 map: map,
                 title:'<%=ads.name%>',
                 icon: iconBase + 'red-stars-lv.png'

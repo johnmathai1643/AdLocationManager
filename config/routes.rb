@@ -1,15 +1,10 @@
-Rails.application.routes.draw do
+  Rails.application.routes.draw do
   devise_for :admins
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
 
   # You can have the root of your site routed with "root"
   root 'index#index'
-
-  # get '/ads_manager/dashboard' => 'ads_manager#dashboard'
-  # get '/ads_manager/fetch_location' => 'ads_manager#fetch_location'
-  # get '/ads_manager/check_ad_location' => 'ads_manager#check_ad_location'
-  # get '/ads_manager/get_ad_location' => 'ads_manager#get_ad_location'
 
     # Example of regular route:
   #   get 'products/:id' => 'catalog#view'

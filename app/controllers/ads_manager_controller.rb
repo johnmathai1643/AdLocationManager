@@ -35,7 +35,7 @@ class AdsManagerController < ApplicationController
     end
 
     def users
-      @users = User.all
+      @users = User.joins(:user_locations).select("*").where('user_locations.user_id = users.id').all
     end
 
     def index
@@ -78,7 +78,7 @@ class AdsManagerController < ApplicationController
 
  private
    def ads_manager_params
-     params.require(:ads_manager).permit(:name, :lat, :lon, :snippet)
+     params.require(:ads_manager).permit(:name, :latitude, :longitude, :snippet)
    end
 
 end

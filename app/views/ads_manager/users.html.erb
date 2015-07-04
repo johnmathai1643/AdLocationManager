@@ -22,13 +22,15 @@
                                         <tr>
                                             <th>Id</th>
                                             <th>Email</th>
+                                            <th>Last Location</th>
                                         </tr>
                                     </thead>
                                     <tbody>
                                       <% @users.each do |user| %>
                                         <tr>
-                                          <td><%= user.id %></td>
+                                          <td><%= user.user_id %></td>
                                           <td><%= user.email %></td>
+                                          <td><%= user.address %></td>
                                         </tr>
                                       <% end %>
                                     </tbody>

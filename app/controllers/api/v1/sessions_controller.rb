@@ -4,6 +4,9 @@ class API::V1::SessionsController < Devise::SessionsController
   # POST /resource/sign_in
   # Resets the authentication token each time! Won't allow you to login on two devices
   # at the same time (so does logout).
+
+  protect_from_forgery with: :null_session, :if => Proc.new { |c| c.request.format == 'application/json' }
+
   def create
    self.resource = warden.authenticate!(auth_options)
    sign_in(resource_name, resource)

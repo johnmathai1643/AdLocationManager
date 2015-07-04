@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150603141937) do
+ActiveRecord::Schema.define(version: 20150626172455) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -36,12 +36,24 @@ ActiveRecord::Schema.define(version: 20150603141937) do
 
   create_table "ads_managers", force: true do |t|
     t.text     "name"
-    t.decimal  "lat",        precision: 9, scale: 6, null: false
-    t.decimal  "lon",        precision: 9, scale: 6, null: false
+    t.decimal  "latitude",   precision: 9, scale: 6, null: false
+    t.decimal  "longitude",  precision: 9, scale: 6, null: false
     t.string   "snippet"
     t.string   "image"
     t.datetime "created_at"
     t.datetime "updated_at"
+    t.string   "address"
+  end
+
+  create_table "user_locations", force: true do |t|
+    t.string   "sour"
+    t.string   "dest"
+    t.integer  "freq"
+    t.integer  "user_id"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+    t.decimal  "latitude",   precision: 9, scale: 6, null: false
+    t.decimal  "longitude",  precision: 9, scale: 6, null: false
     t.string   "address"
   end
 
