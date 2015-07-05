@@ -15,11 +15,11 @@ class API::V1::AdsManagerController < ApplicationController
 	    lon = params[:lon].to_f
 	    adlocation = AdsManager.near([lat, lon], 6.21371)
       
-      # if FreqManager.exists?(:user_id => current_user.id)
-      #    user_location_update = UserLocation.where(:user_id => current_user.id).update_all(latitude = lat, longitude = lon)
-      # else
-      #    user_location_create = UserLocation.create :user_id => current_user.id, :sour => "source", :dest => "destination", :freq => 4, :latitude => lat, :longitude => lon
-      # end
+      if UserLocation.exists?(:user_id => current_user.id)
+         user_location = UserLocation.where(:user_id => current_user.id).update_all(:latitude => lat,:longitude => lon)
+      else
+         UserLocation.create(:user_id => current_user.id, :sour => "source", :dest => "destination", :freq => 1, :latitude => lat, :longitude => lon)
+      end
 
 	    adlocation = {'adlocation' => adlocation}
 	    respond_to do |format|
