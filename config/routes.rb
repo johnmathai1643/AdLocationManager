@@ -32,7 +32,7 @@
     namespace :v1 do
      resources :ads_manager, only: [:index] do 
       collection do 
-        # get 'adlocations'
+        post 'get_frequent_ads'
       end 
      end
     end
