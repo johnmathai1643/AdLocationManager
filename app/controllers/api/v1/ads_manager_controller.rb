@@ -35,20 +35,21 @@ class API::V1::AdsManagerController < ApplicationController
 
   def get_frequent_ads
     if user_signed_in?
-      adlocation = []
-      
+      i = 0
       params[:location].each do |location|
-        # logger.info(location["latitude"])
-        # logger.info(location["longitude"])
-        adlocation.push(AdsManager.near([location["latitude"].to_f, location["longitude"].to_f], 60.21371))
+        if i == 0
+          adlocation = AdsManager.near([location["latitude"].to_f, location["longitude"].to_f], 6.21371)
+        else
+          adlocation = adlocation + AdsManager.near([location["latitude"].to_f, location["longitude"].to_f], 6.21371)
+          # logger.info(location["latitude"])
+          # logger.info(location["longitude"])
+        end
       end
-      
       # if UserLocation.exists?(:user_id => current_user.id)
       #    user_location = UserLocation.where(:user_id => current_user.id).update_all(:latitude => lat,:longitude => lon)
       # else
       #    UserLocation.create(:user_id => current_user.id, :sour => "source", :dest => "destination", :freq => 1, :latitude => lat, :longitude => lon)
       # end
-
       adlocation = {'adlocation' => adlocation}
       respond_to do |format|
         format.json { render :json => adlocation, status: 201 }
