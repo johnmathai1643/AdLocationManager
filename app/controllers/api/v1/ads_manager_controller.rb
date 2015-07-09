@@ -38,7 +38,7 @@ class API::V1::AdsManagerController < ApplicationController
       i = 0
       params[:location].each do |location|
         if i == 0
-          adlocation = AdsManager.near([location["latitude"].to_f, location["longitude"].to_f], 6.21371)
+          adlocation = AdsManager.near([location["latitude"].to_f, location["longitude"].to_f], 60.21371)
         else
           adlocation = adlocation + AdsManager.near([location["latitude"].to_f, location["longitude"].to_f], 6.21371)
           # logger.info(location["latitude"])
