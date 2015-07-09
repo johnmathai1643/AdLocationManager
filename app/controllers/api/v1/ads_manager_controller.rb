@@ -50,6 +50,7 @@ class API::V1::AdsManagerController < ApplicationController
       # else
       #    UserLocation.create(:user_id => current_user.id, :sour => "source", :dest => "destination", :freq => 1, :latitude => lat, :longitude => lon)
       # end
+      adlocation = adlocation.uniq
 
       adlocation = {'adlocation' => adlocation}
       respond_to do |format|
