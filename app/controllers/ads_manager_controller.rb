@@ -48,6 +48,13 @@ class AdsManagerController < ApplicationController
 
   	def create 
   	  @ads_manager = AdsManager.new(ads_manager_params)
+      
+          name = params[:ads_manager][:image].original_filename
+          directory = "public/image"
+          path = File.join(directory, name)
+          File.open(path, "wb") { |f| f.write(params[:ads_manager][:image].read) }
+          @ads_manager.image = "image/"+params[:ads_manager][:image].original_filename.to_s
+      
       @ads_manager.save
       redirect_to action: "index"
     end
