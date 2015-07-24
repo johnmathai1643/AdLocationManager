@@ -47,19 +47,26 @@ class AdsManagerController < ApplicationController
    	end
 
   	def create 
-  	  # render plain: params[:ads_manager].inspect
   	  @ads_manager = AdsManager.new(ads_manager_params)
-  	  @ads_manager.save
+      @ads_manager.save
       redirect_to action: "index"
     end
   	
    	def edit
-        @ads_manager = AdsManager.find(params[:id])
+      @ads_manager = AdsManager.find(params[:id])
     end
 
     def update
   	  @ads_manager = AdsManager.find(params[:id])
-  	  if @ads_manager.update(ads_manager_params)
+      if params[:ads_manager][:image] != nil
+          name = params[:ads_manager][:image].original_filename
+          directory = "public/image"
+          path = File.join(directory, name)
+          File.open(path, "wb") { |f| f.write(params[:ads_manager][:image].read) }
+          @ads_manager.image = "image/"+params[:ads_manager][:image].original_filename.to_s
+  	  end
+      if @ads_manager.update(ads_manager_params)
+        @ads_manager.save
   	    redirect_to @ads_manager
   	  else
   	    render 'edit'
@@ -67,7 +74,7 @@ class AdsManagerController < ApplicationController
   	end
   	
   	def show
-        @ads_manager = AdsManager.find(params[:id])
+       @ads_manager = AdsManager.find(params[:id])
     end
 
     def destroy
