@@ -38,7 +38,11 @@
                             </p>
                             <p>
                               <strong>Image:</strong>
-                              <img alt="Icon" src=<%= "/" + @ads_manager.image %> height="50" width="50" />
+                              <%- if @ads_manager.image == nil %>
+                                <img alt="image" src=<%= "/image/no_image.png" %> height="50" width="50" />
+                              <%-else %>
+                                <img alt="image" src=<%= "/" + @ads_manager.image %> height="50" width="50" />
+                              <%-end %> 
                             </p>
 					    </div> <!-- /.panel-body -->
                     </div> <!-- /.panel -->
