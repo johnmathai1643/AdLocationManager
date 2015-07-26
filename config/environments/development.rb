@@ -27,6 +27,15 @@ Rails.application.configure do
   # number of complex assets.
   config.assets.debug = true
 
+  config.action_mailer.smtp_settings = {
+      address: "smtp.gmail.com",
+      port: 587,
+      authentication: "plain",
+      enable_starttls_auto: true,
+      user_name: ENV["EMAIL_LOGIN"],
+      password: ENV["EMAIL_PASSWORD"]
+  }
+
   # Adds additional error checking when serving assets at runtime.
   # Checks for improperly declared sprockets dependencies.
   # Raises helpful error messages.

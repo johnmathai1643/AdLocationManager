@@ -37,7 +37,12 @@ gem 'geocoder'
 gem 'simple_token_authentication', '~> 1.0'
 # Use Capistrano for deployment
 # gem 'capistrano-rails', group: :development
+gem 'paperclip', '~> 4.1'
 
+gem 'aws-sdk', '~> 1.36.1'
+gem 'fog'
+
+gem "figaro"
 # Use debugger
 # gem 'debugger', group: [:development, :test]
 

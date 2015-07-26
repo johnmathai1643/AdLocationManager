@@ -48,19 +48,19 @@ class AdsManagerController < ApplicationController
 
   	def create 
   	  @ads_manager = AdsManager.new(ads_manager_params)
-      if params[:ads_manager][:image] != nil
-          id_name = AdsManager.last.id + 1
-          id_name = id_name.to_s
-          name = params[:ads_manager][:image].original_filename
-          directory = "public/image"
-          path = File.join(directory, name)
-          File.open(path, "wb") { |f| f.write(params[:ads_manager][:image].read) 
-             @uniq_path = File.join(directory, id_name + File.extname(f)) 
-             File.rename(f, @uniq_path)
-             @ads_manager.image = "image/" + id_name + File.extname(f)
-          }
-          # @ads_manager.image = "image/"+params[:ads_manager][:image].original_filename.to_s
-      end
+      # if params[:ads_manager][:image] != nil
+      #     id_name = AdsManager.last.id + 1
+      #     id_name = id_name.to_s
+      #     name = params[:ads_manager][:image].original_filename
+      #     directory = "public/image"
+      #     path = File.join(directory, name)
+      #     File.open(path, "wb") { |f| f.write(params[:ads_manager][:image].read) 
+      #        @uniq_path = File.join(directory, id_name + File.extname(f)) 
+      #        File.rename(f, @uniq_path)
+      #        @ads_manager.image = "image/" + id_name + File.extname(f)
+      #     }
+      #     # @ads_manager.image = "image/"+params[:ads_manager][:image].original_filename.to_s
+      # end
       @ads_manager.save
       redirect_to action: "index"
     end
@@ -71,17 +71,17 @@ class AdsManagerController < ApplicationController
 
     def update
   	  @ads_manager = AdsManager.find(params[:id])
-      if params[:ads_manager][:image] != nil
-          name = params[:ads_manager][:image].original_filename
-          id_name = params[:id].to_s
-          directory = "public/image"
-          path = File.join(directory, name)
-           File.open(path, "wb") { |f| f.write(params[:ads_manager][:image].read) 
-             @uniq_path = File.join(directory, id_name + File.extname(f)) 
-             File.rename(f, @uniq_path)
-             @ads_manager.image = "image/" + id_name + File.extname(f)
-          }
-  	  end
+     #  if params[:ads_manager][:image] != nil
+     #      name = params[:ads_manager][:image].original_filename
+     #      id_name = params[:id].to_s
+     #      directory = "public/image"
+     #      path = File.join(directory, name)
+     #       File.open(path, "wb") { |f| f.write(params[:ads_manager][:image].read) 
+     #         @uniq_path = File.join(directory, id_name + File.extname(f)) 
+     #         File.rename(f, @uniq_path)
+     #         @ads_manager.image = "image/" + id_name + File.extname(f)
+     #      }
+  	  # end
       if @ads_manager.update(ads_manager_params)
          @ads_manager.save
   	     redirect_to @ads_manager
@@ -102,7 +102,7 @@ class AdsManagerController < ApplicationController
 
  private
    def ads_manager_params
-     params.require(:ads_manager).permit(:name, :latitude, :longitude, :snippet)
+     params.require(:ads_manager).permit(:name, :latitude, :longitude, :snippet, :avatar)
    end
 
 end
