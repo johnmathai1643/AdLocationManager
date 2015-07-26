@@ -14,7 +14,7 @@
             });
                 
                <% @ads_manager.each do |ads| -%>
-                var iconBase = 'http://maps.google.com/mapfiles/kml/paddle/';
+                var iconBase = 'https://maps.google.com/mapfiles/kml/paddle/';
                 var marker = new google.maps.Marker({
                 position: new google.maps.LatLng (<%=ads.latitude%>,<%=ads.longitude%>),
                 map: map,
@@ -31,7 +31,7 @@
         function loadScript() {
         var script = document.createElement('script');
         script.type = 'text/javascript';
-        script.src = 'http://maps.googleapis.com/maps/api/js?v=3.exp' +
+        script.src = 'https://maps.googleapis.com/maps/api/js?v=3.exp' +
             '&signed_in=true&callback=initialize';
         document.body.appendChild(script);
        }
