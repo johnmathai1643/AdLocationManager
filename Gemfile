@@ -39,6 +39,8 @@ gem 'simple_token_authentication', '~> 1.0'
 # gem 'capistrano-rails', group: :development
 gem 'paperclip', '~> 4.1'
 
+gem 'rails_12factor', group: :production
+
 gem 'aws-sdk', '~> 1.36.1'
 gem 'fog'
 
