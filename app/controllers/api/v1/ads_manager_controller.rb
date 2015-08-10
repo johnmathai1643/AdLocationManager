@@ -13,7 +13,7 @@ class API::V1::AdsManagerController < ApplicationController
   	if user_signed_in?
 	    lat = params[:lat].to_f
 	    lon = params[:lon].to_f
-	    adlocation = AdsManager.near([lat, lon], 5)
+	    adlocation = AdsManager.near([lat, lon], 3)
       
       if UserLocation.exists?(:user_id => current_user.id)
          user_location = UserLocation.where(:user_id => current_user.id).update_all(:latitude => lat,:longitude => lon)
@@ -42,7 +42,7 @@ class API::V1::AdsManagerController < ApplicationController
         # logger.info(i)
         # logger.info(location["longitude"])
         # i = i + 1
-        adlocation = adlocation + AdsManager.near([location["latitude"].to_f, location["longitude"].to_f], 5)
+        adlocation = adlocation + AdsManager.near([location["latitude"].to_f, location["longitude"].to_f], 3)
       end
       
       # if UserLocation.exists?(:user_id => current_user.id)
